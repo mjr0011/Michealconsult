@@ -7,17 +7,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book A Session</title>
   <link rel="stylesheet" href="contact.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+        emailjs.init("ConsA5uqi8Em32O3Z"); // Replace with your EmailJS public key
+    })();
+  </script>
 </head>
 
 <body>
 
-    <section class="section contact" id="contact">
-        <div class="container">
-      
-            <h2 class="h2 section-title underline">Book a Consulting Session</h2>
-            <h2 class="cl3">Emails should be sent to michaelodugogloballimited@gmail.com for session books, inquiry and feedback.</h2>
+  <!-- 
+  - #CONTACT FORM
+  -->
+
+  <section class="section contact" id="contact">
+    <div class="container">
+      <h2 class="h2 section-title underline">Book A Session</h2>
+
+      <form class="contact-form" id="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Enter your name">
         </div>
-      </section>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="Enter your email">
+        </div>
+
+        <div class="form-group">
+          <label for="session-date">Session Date</label>
+          <input type="date" id="session-date" name="session-date" required>
+        </div>
+
+        <div class="form-group">
+          <label for="sex">Sex</label>
+          <select id="sex" name="sex" required>
+            <option value="" disabled selected>Select your sex</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <button type="button" onclick="sendEmail()" class="btn">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    function sendEmail() {
+      // Collect form data
+      const formData = {
+        name: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        email: document.getElementById("email").value,
+        session_date: document.getElementById("session-date").value,
+        sex: document.getElementById("sex").value
+      };
+
+      // Validate all fields
+      for (let key in formData) {
+        if (formData[key].trim() === "") {
+          alert("Please fill in all the fields before submitting.");
+          return;
+        }
+      }
+
+      // Send email using EmailJS
+      emailjs.send("service_7h9df8h", "template_71tpyyc", {
+        to_email: "michaelodugogloballimited@gmail.com",
+        message: JSON.stringify(formData, null, 2) // Format as JSON
+      }).then(() => {
+        alert("Form submitted successfully! We will get back to you shortly");
+        document.getElementById("contact-form").reset(); // Reset the form after submission
+      }).catch(error => {
+        alert("Submission failed. Please try again.");
+        console.error(error);
+      });
+    }
+  </script>
 
 </body>
 

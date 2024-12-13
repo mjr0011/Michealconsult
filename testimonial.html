@@ -5,55 +5,49 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Testimonial</title>
-  <link rel="stylesheet" href="contact.css">
+  <title>Testimonial Slideshow</title>
+  <link rel="stylesheet" href="testimonial.css">
 </head>
 
 <body>
+  <!-- TESTIMONIAL SECTION -->
+  <section class="section testimonial" id="testimonial">
+    <div class="container">
+      <h2 class="h2 section-title underline">What Our Clients Say</h2>
 
-    <section class="section contact" id="contact">
-        <div class="container">
-      
-            <h2 class="h2 section-title underline">Testimonials & Endorsement</h2>
+      <div class="testimonial-slider">
+        <div class="testimonial-item active">
+          <p class="testimonial-text">
+            "Michael Odu Go Global Limited transformed our business strategy and helped us achieve our goals. Their insights were invaluable!"
+          </p>
+          <p class="client-name">- Modesta Odinu</p>
         </div>
 
-       
-      </section>
-      <div class="full-img" id="fullimgBox">
-        <img src="" id="fullimg">
+        <div class="testimonial-item">
+          <p class="testimonial-text">
+            "The team at Michael Odu Go Global Limited provided exceptional service and support. I highly recommend them!"
+          </p>
+          <p class="client-name">- Abdulrahman Abubakar</p>
+        </div>
 
-        <span onclick="closefullimg()">X</span>
+        <div class="testimonial-item">
+          <p class="testimonial-text">
+            "Thanks to their coaching, our profits have increased significantly. They truly care about their clients' success."
+          </p>
+          <p class="client-name">- Ambassador Seun Kolawole</p>
+        </div>
       </div>
-      <video src="v1.mp4" width="330px" height="330px" controls></video>
-      <div class="img-gallery">
-        <img src="wi1.jpg" alt="" onclick="openfullimg(this.scr)">
-        <img src="wi2.jpg" alt="" onclick="openfullimg(this.scr)">
-        <img src="wi3.jpg" alt="" onclick="openfullimg(this.scr)">
-        <img src="wi4.jpg" alt="" onclick="openfullimg(this.scr)">
-        <img src="wi5.jpg" alt="" onclick="openfullimg(this.scr)">
-        <img src="wi6.jpg" alt="" onclick="openfullimg(this.scr)">
-        <img src="w7.jpg" alt="" onclick="openfullimg(this.scr)">
-        <img src="w8.jpg" alt="" onclick="openfullimg(this.scr)">
-        <img src="w9.jpg" alt="" onclick="openfullimg(this.scr)">
-        <img src="w10.jpg" alt="" onclick="openfullimg(this.scr)">
-   
+
+      <div class="controls">
+        <button class="prev-btn">&#10094;</button>
+        <button class="next-btn">&#10095;</button>
       </div>
-       
-      <script>
+    </div>
+  </section>
 
-        var fullimgBox = document.getElementById("fullimgBox");
-        var fullimg = document.getElementById("fullimg");
+  <video src="v1.mp4" controls height="300px" height="500px"></video>
 
-        function openfullimg(pic){
-            fullimgBox.style.display = "flex";
-            fullimg.scr = pic;
-        }
-
-        function closefullimg(){
-            fullimgBox.style.display = "none";
-        }
-      </script>
-
+  <script src="testimonial.js"></script>
 </body>
 
 </html>
